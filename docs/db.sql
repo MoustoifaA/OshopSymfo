@@ -159,4 +159,11 @@ INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`, `rate`, 
 INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`, `rate`, `status`, `created_at`, `updated_at`, `brand_id`, `type_id`) VALUES (25, 'Sans dale', 'Nunc vero inanes flatus quorundam vile esse quicquid extra urbis pomerium nascitur aestimant praeter orbos et caelibes, nec credi potest qua obsequiorum diversitate coluntur homines sine liberis Romae.', 'assets/images/produits/25-100dales.jpg', 23, 2, 1, '2018-10-17 11:00:00', NULL, 7,4);
 INSERT INTO `product` (`id`, `name`, `description`, `picture`, `price`, `rate`, `status`, `created_at`, `updated_at`, `brand_id`, `type_id`) VALUES (26, 'Talon aibrille', 'Proinde concepta rabie saeviore, quam desperatio incendebat et fames, amplificatis viribus ardore incohibili in excidium urbium matris Seleuciae efferebantur, quam comes tuebatur Castricius tresque legiones bellicis sudoribus induratae.', 'assets/images/produits/26-oCirage.jpg', 240, 5, 1, '2018-10-17 11:00:00', NULL, 3,5);
 
+
+
+
+
+INSERT INTO `product_category` (`product_id`, `category_id`) VALUES ('1', '1'), ('2', '6'), ('3', '1'), ('4', '1'), ('5', '1'), ('6', '1'), ('7', '1'), ('8', '1'), ('9', '1'), ('10', '1'), ('11', '1'), ('12', '1'), ('13', '1'), ('14', '1'), ('15', '1'), ('18', '1'), ('19', '1'), ('20', '1'), ('21', '5'), ('22', '4'), ('23', '7'), ('24', '7'), ('26', '3')
+
+
 COMMIT;
