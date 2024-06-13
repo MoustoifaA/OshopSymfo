@@ -23,7 +23,8 @@ class CatalogController extends AbstractController
 
         return $this->render('catalog/type.html.twig', [
             'productList' => $productList,
-            'type' => $type,
+            'type' => $type]);
+    }
 
     #[Route('/category/{id}', name: 'categories', requirements: ['id' => '\d+'])]
     public function category(Category $category): Response
