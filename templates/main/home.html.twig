@@ -11,7 +11,7 @@
             <div class="card-img-overlay d-flex align-items-center">
               <div class="w-100 py-3">
               
-                <h2 class="display-3 font-weight-bold mb-4"> {{ categories[1].name }} </h2><a href="products_list.html" class="btn btn-light">{{ categories[1].subtitle }}</a>
+                <h2 class="display-3 font-weight-bold mb-4"> {{ categories[1].name }} </h2><a href="{{path("app_catalog_categories", {id:categories[1].id} )}}" class="btn btn-light">{{ categories[1].subtitle }}</a>
               </div>
             </div>
           </div>
@@ -21,7 +21,7 @@
               alt="Card image" class="card-img">
             <div class="card-img-overlay d-flex align-items-center">
               <div class="w-100 py-3">
-                <h2 class="display-3 font-weight-bold mb-4">{{ categories[2].name }} </h2><a href="products_list.html" class="btn btn-light">{{ categories[2].subtitle }} </a>
+                <h2 class="display-3 font-weight-bold mb-4">{{ categories[2].name }} </h2><a href="{{path("app_catalog_categories", {id:categories[2].id} )}}" class="btn btn-light">{{ categories[2].subtitle }} </a>
               </div>
             </div>
           </div>
@@ -35,7 +35,7 @@
               alt="Card image" class="card-img">
             <div class="card-img-overlay d-flex align-items-center">
               <div class="w-100">
-                <h2 class="display-4 mb-4">{{ categories[3].name }} </h2><a href="products_list.html" class="btn btn-link text-white">{{ categories[3].subtitle}} 
+                <h2 class="display-4 mb-4">{{ categories[3].name }} </h2><a href="{{path("app_catalog_categories", {id:categories[3].id} )}}" class="btn btn-link text-white">{{ categories[3].subtitle}} 
                   <i class="fa-arrow-right fa ml-2"></i></a>
               </div>
             </div>
@@ -48,7 +48,7 @@
               <div class="card-img-overlay d-flex align-items-center">
                 <div class="w-100">
                   <h2 class="display-4 mb-4">{{ categories[4].name }} </h2>
-                  <a href="products_list.html" class="btn btn-link text-dark">{{ categories[4].subtitle }} 
+                  <a href="{{path("app_catalog_categories", {id:categories[4].id} )}}" class="btn btn-link text-dark">{{ categories[4].subtitle }} 
                     <i class="fa-arrow-right fa ml-2"></i>
                   </a>
                 </div>
@@ -60,7 +60,7 @@
               alt="Card image" class="card-img">
             <div class="card-img-overlay d-flex align-items-center">
               <div class="w-100">
-                <h2 class="display-4 mb-4">{{ categories[5].name }} </h2><a href="products_list.html" class="btn btn-link text-white">{{ categories[5].subtitle }}  <i class="fa-arrow-right fa ml-2"></i></a>
+                <h2 class="display-4 mb-4">{{ categories[5].name }} </h2><a href="{{path("app_catalog_categories", {id:categories[5].id} )}}" class="btn btn-link text-white">{{ categories[5].subtitle }}  <i class="fa-arrow-right fa ml-2"></i></a>
               </div>
             </div>
           </div>
