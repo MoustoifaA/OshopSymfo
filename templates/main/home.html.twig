@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenu sur Oshop{% endblock %}
+{% block body %}
+  <section>
+    <div class="container-fluid">
+      <div class="row mx-0">
+        <div class="col-md-6">
+          <div class="card border-0 text-white text-center"><img src="{{ asset(categories[1].picture)}}"
+              alt="Card image" class="card-img">
+            <div class="card-img-overlay d-flex align-items-center">
+              <div class="w-100 py-3">
+              
+                <h2 class="display-3 font-weight-bold mb-4"> {{ categories[1].name }} </h2><a href="{{path("app_catalog_categories", {id:categories[1].id} )}}" class="btn btn-light">{{ categories[1].subtitle }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card border-0 text-white text-center"><img src="{{asset(categories[2].picture)}}"
+              alt="Card image" class="card-img">
+            <div class="card-img-overlay d-flex align-items-center">
+              <div class="w-100 py-3">
+                <h2 class="display-3 font-weight-bold mb-4">{{ categories[2].name }} </h2><a href="{{path("app_catalog_categories", {id:categories[2].id} )}}" class="btn btn-light">{{ categories[2].subtitle }} </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mx-0">
+          
+      <div class="col-lg-4">
+          <div class="card border-0 text-center text-white"><img src="{{asset(categories[3].picture)}}"
+              alt="Card image" class="card-img">
+            <div class="card-img-overlay d-flex align-items-center">
+              <div class="w-100">
+                <h2 class="display-4 mb-4">{{ categories[3].name }} </h2><a href="{{path("app_catalog_categories", {id:categories[3].id} )}}" class="btn btn-link text-white">{{ categories[3].subtitle}} 
+                  <i class="fa-arrow-right fa ml-2"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card border-0 text-center text-dark">
+              <img src="{{asset(categories[4].picture)}}"
+                alt="Card image" class="card-img">
+              <div class="card-img-overlay d-flex align-items-center">
+                <div class="w-100">
+                  <h2 class="display-4 mb-4">{{ categories[4].name }} </h2>
+                  <a href="{{path("app_catalog_categories", {id:categories[4].id} )}}" class="btn btn-link text-dark">{{ categories[4].subtitle }} 
+                    <i class="fa-arrow-right fa ml-2"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="col-lg-4">
+          <div class="card border-0 text-center text-white"><img src="{{asset(categories[5].picture)}}"
+              alt="Card image" class="card-img">
+            <div class="card-img-overlay d-flex align-items-center">
+              <div class="w-100">
+                <h2 class="display-4 mb-4">{{ categories[5].name }} </h2><a href="{{path("app_catalog_categories", {id:categories[5].id} )}}" class="btn btn-link text-white">{{ categories[5].subtitle }}  <i class="fa-arrow-right fa ml-2"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+{% endblock %}
