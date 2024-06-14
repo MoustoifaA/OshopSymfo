@@ -1,40 +1,41 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Bienvenu sur Oshop{% endblock %}
-
 {% block body %}
   <section>
     <div class="container-fluid">
       <div class="row mx-0">
         <div class="col-md-6">
-          <div class="card border-0 text-white text-center"><img src="assets/images/categ5.jpeg"
+          <div class="card border-0 text-white text-center"><img src="{{ asset(categories[1].picture)}}"
               alt="Card image" class="card-img">
             <div class="card-img-overlay d-flex align-items-center">
               <div class="w-100 py-3">
-                <h2 class="display-3 font-weight-bold mb-4">Vintage</h2><a href="products_list.html" class="btn btn-light">Découvrir</a>
+              
+                <h2 class="display-3 font-weight-bold mb-4"> {{ categories[1].name }} </h2><a href="products_list.html" class="btn btn-light">{{ categories[1].subtitle }}</a>
               </div>
             </div>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="card border-0 text-white text-center"><img src="assets/images/categ2.jpeg"
+          <div class="card border-0 text-white text-center"><img src="{{asset(categories[2].picture)}}"
               alt="Card image" class="card-img">
             <div class="card-img-overlay d-flex align-items-center">
               <div class="w-100 py-3">
-                <h2 class="display-3 font-weight-bold mb-4">Au travail</h2><a href="products_list.html" class="btn btn-light">C'est parti</a>
+                <h2 class="display-3 font-weight-bold mb-4">{{ categories[2].name }} </h2><a href="products_list.html" class="btn btn-light">{{ categories[2].subtitle }} </a>
               </div>
             </div>
           </div>
         </div>
       </div>
+      
       <div class="row mx-0">
           
-        <div class="col-lg-4">
-          <div class="card border-0 text-center text-white"><img src="assets/images/categ4.jpeg"
+      <div class="col-lg-4">
+          <div class="card border-0 text-center text-white"><img src="{{asset(categories[3].picture)}}"
               alt="Card image" class="card-img">
             <div class="card-img-overlay d-flex align-items-center">
               <div class="w-100">
-                <h2 class="display-4 mb-4">Sortir</h2><a href="products_list.html" class="btn btn-link text-white">Faire un tour
+                <h2 class="display-4 mb-4">{{ categories[3].name }} </h2><a href="products_list.html" class="btn btn-link text-white">{{ categories[3].subtitle}} 
                   <i class="fa-arrow-right fa ml-2"></i></a>
               </div>
             </div>
@@ -42,12 +43,12 @@
         </div>
         <div class="col-lg-4">
             <div class="card border-0 text-center text-dark">
-              <img src="assets/images/categ1.jpeg"
+              <img src="{{asset(categories[4].picture)}}"
                 alt="Card image" class="card-img">
               <div class="card-img-overlay d-flex align-items-center">
                 <div class="w-100">
-                  <h2 class="display-4 mb-4">Détente</h2>
-                  <a href="products_list.html" class="btn btn-link text-dark">Se faire plaisir
+                  <h2 class="display-4 mb-4">{{ categories[4].name }} </h2>
+                  <a href="products_list.html" class="btn btn-link text-dark">{{ categories[4].subtitle }} 
                     <i class="fa-arrow-right fa ml-2"></i>
                   </a>
                 </div>
@@ -55,11 +56,11 @@
             </div>
           </div>
         <div class="col-lg-4">
-          <div class="card border-0 text-center text-white"><img src="assets/images/categ3.jpeg"
+          <div class="card border-0 text-center text-white"><img src="{{asset(categories[5].picture)}}"
               alt="Card image" class="card-img">
             <div class="card-img-overlay d-flex align-items-center">
               <div class="w-100">
-                <h2 class="display-4 mb-4">Cérémonie</h2><a href="products_list.html" class="btn btn-link text-white">Bien choisir <i class="fa-arrow-right fa ml-2"></i></a>
+                <h2 class="display-4 mb-4">{{ categories[5].name }} </h2><a href="products_list.html" class="btn btn-link text-white">{{ categories[5].subtitle }}  <i class="fa-arrow-right fa ml-2"></i></a>
               </div>
             </div>
           </div>
