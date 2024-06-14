@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-
+use App\Entity\Brand;
 use App\Entity\Type;
 use App\Entity\Category;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,10 +17,9 @@ class CatalogController extends AbstractController
     #[Route('/type/{id}', methods:'GET', name: 'type', requirements:["id" => "\d+"])]
     public function type(Type $type): Response
     {
-        $productList = $type->getProducts();
 
-        return $this->render('catalog/type.html.twig', [
-            'productList' => $productList,
+        return $this->render('catalog/base_productList.html.twig', [
+            'products' => $type->getProducts(),
             'type' => $type]);
     }
 
@@ -28,9 +27,20 @@ class CatalogController extends AbstractController
     public function category(Category $category): Response
     {
 
-        return $this->render('catalog/category.html.twig', [
+        return $this->render('catalog/base_productList.html.twig', [
             'products' => $category->getProducts(),
             'category' => $category
+
+        ]);
+    }
+
+    #[Route('/brand/{id}', name: 'brand', requirements: ['id' => '\d+'])]
+    public function brand(Brand $brand): Response
+    {
+
+        return $this->render('catalog/base_productList.html.twig', [
+            'products' => $brand->getProducts(),
+            'brand' => $brand
 
         ]);
     }
