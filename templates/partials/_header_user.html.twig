@@ -11,12 +11,12 @@
             </ul>
              <ul class="list-inline mb-0">
               <li class="list-inline-item pr-3 mr-0">
-                 <a class="nav-link btn btn-primary p-1" href="{{ path('app_login')}}">S'identifier</a>
+                 <a class="nav-link " href="{{ path('app_login')}}"><i class="fa fa-user p-2"></i><p class="d-none d-lg-inline-block m-0">{{app.user.firstname}} {{app.user.lastname}}</p></a>
               </li>
                <li class="list-inline-item pr-3 mr-0">
-                <a class="nav-link btn btn-warning p-1" href="{{ path('app_register')}}">S'enregistrer</a>
+                <a class="nav-link btn btn-danger p-1" href="{{ path('app_logout')}}"><i class="fa fa-power-off m-0 mr-lg-2"></i><p class="d-none d-lg-inline-block m-0">Se déconnecter</p></a>
               </li>
-              <li class="list-inline-item pr-3 mr-0">
+              <li class="list-inline-item pr-3 mr-0 ">
                <a class="nav-link btn btn-info pt-1 pb-1" href="#"> <i class="fa fa-shopping-cart"></i> </a>
               </li>
             </ul>
