@@ -50,6 +50,7 @@ DROP TABLE IF EXISTS `type` ;
 CREATE TABLE IF NOT EXISTS `type` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(64) NOT NULL COMMENT 'Le nom du type',
+  `subtitle` VARCHAR(64) NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'La date de création de la catégorie',
   `updated_at` TIMESTAMP NULL COMMENT 'La date de la dernière mise à jour de la catégorie',
   PRIMARY KEY (`id`))
