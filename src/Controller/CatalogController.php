@@ -6,6 +6,7 @@ use App\Entity\Brand;
 use App\Entity\Type;
 use App\Entity\Category;
 use App\Entity\Product;
+use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,11 +26,11 @@ class CatalogController extends AbstractController
     }
 
     #[Route('/category/{id}', name: 'categories', requirements: ['id' => '\d+'])]
-    public function category(Category $category): Response
+    public function category(Category $category,CategoryRepository $categoryR, $id): Response
     {
 
         return $this->render('catalog/base_productList.html.twig', [
-            'products' => $category->getProducts(),
+            'products' => $categoryR->getNbProduct($id, 12),
             'category' => $category
 
         ]);

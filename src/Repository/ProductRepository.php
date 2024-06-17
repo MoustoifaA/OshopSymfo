@@ -16,6 +16,24 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+
+    public function getNbProducts(int $categoryId, int $nbProduct){
+        
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\Product p
+            Where p.
+            ORDER BY p.created_at DESC
+            LIMIT :nbProduct'
+        )->setParameter('nbProduct', $nbProduct);
+
+        // returns an array of Product objects
+        return $query->getResult();
+
+    }
+
     //    /**
     //     * @return Product[] Returns an array of Product objects
     //     */
