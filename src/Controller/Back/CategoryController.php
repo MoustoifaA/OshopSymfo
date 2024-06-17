@@ -24,14 +24,22 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/add', name: 'app_back_category_add', methods: ['GET', 'POST'])]
-    public function add(Request $request, EntityManagerInterface $entityManager): Response
+    public function add(Request $request, EntityManagerInterface $entityManager, CategoryRepository $cateRepo): Response
     {
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
+            if($category->getHomeOrder() > 0){
+
+                $allHomeCategory = $cateRepo->getHomeOrder();
+                $allHomeCategory[$category->getHomeOrder()]->setHomeOrder(0);
+            }
             $entityManager->persist($category);
+
+
+
             $entityManager->flush();
 
             return $this->redirectToRoute('app_back_category_browse', [], Response::HTTP_SEE_OTHER);
@@ -52,13 +60,21 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_back_category_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Category $category, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Category $category, EntityManagerInterface $entityManager, CategoryRepository $cateRepo): Response
     {
+        $actualHomeOrder = $category->getHomeOrder();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $category->setUpdatedAt(new DateTimeImmutable());
+
+            if($category->getHomeOrder() > 0)
+            {
+                $allHomeCategory = $cateRepo->getHomeOrder();
+                $allHomeCategory[$category->getHomeOrder()]->setHomeOrder($actualHomeOrder); 
+            }
+
             $entityManager->flush();
 
             return $this->redirectToRoute('app_back_category_browse', [], Response::HTTP_SEE_OTHER);
