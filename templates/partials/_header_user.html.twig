@@ -4,29 +4,41 @@
         <div class="row d-flex align-items-center justify-content-between">
           {# <div class="col-sm-7 d-none d-sm-block"> #}
             <ul class="list-inline mb-0 col-sm-7 d-none d-sm-block">
+             {% if '/back/' not in app.request.uri %}
+          
               <li class="list-inline-item pr-3 mr-0">
                 <i class="fa fa-phone"></i> 01 02 03 04 05
               </li>
               <li class="list-inline-item px-3 border-left d-none d-lg-inline-block">Livraison offerte à partir de 100€</li>
+            {% endif %}
             </ul>
              <ul class="list-inline mb-0">
               <li class="list-inline-item pr-3 mr-0">
-                 <a class="nav-link " href="{{ path('app_login')}}"><i class="fa fa-user p-2"></i><p class="d-none d-lg-inline-block m-0">{{app.user.firstname}} {{app.user.lastname}}</p></a>
+                 <a class="nav-link " href="#"><i class="fa fa-user p-2"></i><p class="d-none d-lg-inline-block m-0">{{app.user.firstname}} {{app.user.lastname}}</p></a>
               </li>
                <li class="list-inline-item pr-3 mr-0">
-                <a class="nav-link btn btn-danger p-1" href="{{ path('app_back_main')}}"><i class="fa fa-desktop mr-lg-2"></i><p class="d-none d-lg-inline-block m-0">Back Office</p></a>
+                 {% if '/back/' not in app.request.uri %}
+                <a class="nav-link btn btn-secondary p-1" href="{{ path('app_back_main')}}"><i class="fa fa-desktop mr-lg-2"></i><p class="d-none d-lg-inline-block m-0">Back Office</p></a>
+                {% else %}
+                <a class="nav-link btn btn-secondary p-1" href="{{ path('app_main_home')}}"><i class="fa fa-desktop mr-lg-2"></i><p class="d-none d-lg-inline-block m-0">Back to Oshop</p></a>
+                {% endif %}
               </li>
                <li class="list-inline-item pr-3 mr-0">
                 <a class="nav-link btn btn-danger p-1" href="{{ path('app_logout')}}"><i class="fa fa-power-off m-0 mr-lg-2"></i><p class="d-none d-lg-inline-block m-0">Se déconnecter</p></a>
               </li>
+               {% if '/back/' not in app.request.uri %}
               <li class="list-inline-item pr-3 mr-0 ">
                <a class="nav-link btn btn-info pt-1 pb-1" href="#"> <i class="fa fa-shopping-cart"></i> </a>
               </li>
+              {% endif %}
             </ul>
           {# </div> #}
         </div>
       </div>
     </div>
-
+  {% if '/back/' in app.request.uri %}
+   {% include 'partials/_nav_back.html.twig' %}
+  {% else %}
    {% include 'partials/_nav.html.twig' %}
+   {% endif %}
   </header>

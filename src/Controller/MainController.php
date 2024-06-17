@@ -17,14 +17,11 @@ class MainController extends AbstractController
 
         // creations d'un tableau associatif pour cle = homeOrder et valeur categorie
         $categories = $categoryRepository->getHomeOrder();
-        $homeOrderList = [];
-        foreach ($categories as $category) {
-            $homeOrderList[$category->getHomeOrder()] = $category;
-         }
+        
 
         return $this->render('main/home.html.twig',
     [
-        'categories' => $homeOrderList
+        'categories' => $categories
     ]);
     }
 
