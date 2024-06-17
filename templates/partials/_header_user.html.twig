@@ -16,6 +16,7 @@
               <li class="list-inline-item pr-3 mr-0">
                  <a class="nav-link " href="#"><i class="fa fa-user p-2"></i><p class="d-none d-lg-inline-block m-0">{{app.user.firstname}} {{app.user.lastname}}</p></a>
               </li>
+                {% if is_granted('ROLE_CATALOG_MANAGER') %}
                <li class="list-inline-item pr-3 mr-0">
                  {% if '/back/' not in app.request.uri %}
                 <a class="nav-link btn btn-secondary p-1" href="{{ path('app_back_main')}}"><i class="fa fa-desktop mr-lg-2"></i><p class="d-none d-lg-inline-block m-0">Back Office</p></a>
@@ -23,6 +24,7 @@
                 <a class="nav-link btn btn-secondary p-1" href="{{ path('app_main_home')}}"><i class="fa fa-desktop mr-lg-2"></i><p class="d-none d-lg-inline-block m-0">Back to Oshop</p></a>
                 {% endif %}
               </li>
+              {% endif %}
                <li class="list-inline-item pr-3 mr-0">
                 <a class="nav-link btn btn-danger p-1" href="{{ path('app_logout')}}"><i class="fa fa-power-off m-0 mr-lg-2"></i><p class="d-none d-lg-inline-block m-0">Se déconnecter</p></a>
               </li>

@@ -34,8 +34,16 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/back, roles: [ROLE_CATALOG_MANAGER] }
         # - { path: ^/profile, roles: ROLE_USER }
+    role_hierarchy:
+        # on peut utiliser le role hierarchy de deux manieres
+        # 1 - hériter des droits d'un autre role
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_ADMIN:  ROLE_CATALOG_MANAGER
+        ROLE_CATALOG_MANAGER: ROLE_USER
+        # 2 - définir ce que chaque role peut faire
+        ROLE_USER: ROLE_AJOUTER_COMMENTAIRE
 
 when@test:
     security:
