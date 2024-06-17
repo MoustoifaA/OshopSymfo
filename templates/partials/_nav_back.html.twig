@@ -14,9 +14,8 @@
               <div class="dropdown">
                 <a class="nav-link dropdown-toggle {% if 'catalog/category' in app.request.uri %} active {% endif %}" href="#" data-toggle="dropdown">Catégories</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  {% for category in navList.getCategory %}
-                    <a class="dropdown-item" href="{{path("app_catalog_categories", {id:category.id} )}}">{{category.name}}</a>
-                  {% endfor %}
+                    <a class='dropdown-item' href="{{ path('app_back_category_add') }}">categories list</a>
+                    <a class='dropdown-item' href="{{ path('app_back_category_browse') }}">New category</a>
                 </div>
               </div>
             </li>
