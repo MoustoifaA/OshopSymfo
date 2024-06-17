@@ -34,6 +34,10 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class='dropdown-item' href="{{ path('app_back_brand_index') }}">List</a>
                     <a class='dropdown-item' href="{{ path('app_back_brand_new') }}">Add brand</a>
+                <a class="nav-link dropdown-toggle {% if 'back/type' in app.request.uri %} active {% endif %}" href="#" data-toggle="dropdown">Types Manager</a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class='dropdown-item' href="{{ path('app_back_type_index') }}">List</a>
+                  <a class='dropdown-item' href="{{ path('app_back_type_new') }}">Add type</a>
                 </div>
               </div>
             </li>
