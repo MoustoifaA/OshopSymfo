@@ -33,11 +33,11 @@
             <h3 class="h3 text-uppercase mb-1">{{product.name}}</h3>
             <div class="text-muted">by <em>{{product.brand.name}}</em></div>
             <div>
-              <i class="fa fa-star{% if 1 - product.rate > 0 %}-o{% endif %}"></i>
-              <i class="fa fa-star{% if 2 - product.rate > 0 %}-o{% endif %}"></i>
-              <i class="fa fa-star{% if 3 - product.rate > 0 %}-o{% endif %}"></i>
-              <i class="fa fa-star{% if 4 - product.rate > 0 %}-o{% endif %}"></i>
-              <i class="fa fa-star{% if 5 - product.rate > 0 %}-o{% endif %}"></i>
+              <i class="fa{% if 1 - product.rate > 0 %}-regular{% else %}-solid{% endif %} fa-star"></i>
+              <i class="fa{% if 2 - product.rate > 0 %}-regular{% else %}-solid{% endif %} fa-star"></i>
+              <i class="fa{% if 3 - product.rate > 0 %}-regular{% else %}-solid{% endif %} fa-star"></i>
+              <i class="fa{% if 4 - product.rate > 0 %}-regular{% else %}-solid{% endif %} fa-star"></i>
+              <i class="fa{% if 5 - product.rate > 0 %}-regular{% else %}-solid{% endif %} fa-star"></i>
             </div>
           </div>
           <div class="my-2">
