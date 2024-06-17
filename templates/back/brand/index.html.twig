@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List of Brands{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>List of Brands</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Created at</th>
+                <th>Last update</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for brand in brands %}
+            <tr>
+                <td>{{ brand.id }}</td>
+                <td>{{ brand.name }}</td>
+                <td>{{ brand.createdAt ? brand.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ brand.updatedAt ? brand.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a title="details" class='btn btn-secondary mb-2'  href="{{ path('app_back_brand_show', {'id': brand.id}) }}"><i class="fa-solid fa-plus fa-xl"></i></a>
+                    <a title="edit" class='btn btn-info mb-2' href="{{ path('app_back_brand_edit', {'id': brand.id}) }}"><i class="fa-solid fa-pen-to-square fa-xl"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a title="add" class='btn btn-primary m-2' href="{{ path('app_back_brand_new') }}">New Brand</a>
+</div>
+{% endblock %}
