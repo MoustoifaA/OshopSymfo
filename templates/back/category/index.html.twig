@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List of categories{% endblock %}
+
+
+{% block body %}
+<div class='container'>
+    <h1>List of categories</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Subtitle</th>
+                <th>Picture</th>
+                <th>Home order</th>
+                <th>Created at</th>
+                <th>Last update</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td>{{ category.subtitle }}</td>
+                <td>{{ category.picture }}</td>
+                <td>{{ category.homeOrder }}/5</td>
+                <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a title="details" class='btn btn-secondary mb-2' href="{{ path('app_back_category_read', {'id': category.id}) }}"><i class="fa-solid fa-plus fa-xl"></i></a>
+                    <a title="edit" class='btn btn-info mb-2' href="{{ path('app_back_category_edit', {'id': category.id}) }}"><i class="fa-solid fa-pen-to-square fa-xl"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a title="add" class='btn btn-primary m-2' href="{{ path('app_back_category_add') }}">New category</a>
+</div>
+{% endblock %}

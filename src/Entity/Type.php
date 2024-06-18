@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Entity;
+use DateTimeImmutable;
 
-use App\Repository\TypeRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\TypeRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 #[ORM\Entity(repositoryClass: TypeRepository::class)]
 class Type
@@ -36,6 +38,7 @@ class Type
     public function __construct()
     {
         $this->products = new ArrayCollection();
+        $this->created_at = new DateTimeImmutable();
     }
 
     public function getId(): ?int

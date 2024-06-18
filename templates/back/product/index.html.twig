@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List of Products{% endblock %}
+{% block body %}
+<div class="container">
+    <h1>List of Products</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Picture</th>
+                <th>Price</th>
+                <th>Rate</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.picture }}</td>
+                <td>{{ product.price }} €</td>
+                <td>{{ product.rate }} / 5</td>
+                <td>
+                {% if product.status == 0 %}
+                <i class="fa-solid fa-ban"></i>
+                {% elseif product.status == 1  %}
+                <i class="fa-solid fa-check" style="color: #0dfb09;"></i>
+                {% else %}
+                <i class="fa-solid fa-xmark" style="color: #fa0505;"></i>
+                {% endif %}
+
+             
+                </td>
+                <td>
+                    <a title="details" class="btn btn-secondary mb-2"href="{{ path('app_back_product_read', {'id': product.id}) }}"><i class="fa-solid fa-plus fa-xl"></i></a>
+                    <a title="edit" class="btn btn-info mb-2"href="{{ path('app_back_product_edit', {'id': product.id}) }}"><i class="fa-solid fa-pen-to-square fa-xl"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a title="create new product" class="btn btn-primary m-2" href="{{ path('app_back_product_add') }}">New Product</a>
+</div>
+{% endblock %}

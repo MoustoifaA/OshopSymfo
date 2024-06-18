@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to Back Office{% endblock %}
+
+{% block body %}
+<div class='container text-center mt-5'>
+    <h1 class=''>Welcome to Oshop back office 🚀</h1>
+    <h2 class='mt-5'>{{app.user.firstname}} {{app.user.lastname}}</h2>
+    {% if app.user.role == "ROLE_ADMIN" %}
+    <p>Administrator</p>
+    {% else %}
+    <p>User</p>
+    {% endif %}
+</div>
+{% endblock %}

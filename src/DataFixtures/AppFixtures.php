@@ -2,17 +2,80 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Brand;
-use App\Entity\Category;
 use App\Entity\Type;
+use App\Entity\User;
+use App\Entity\Brand;
 use App\Entity\Product;
+use App\Entity\Category;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+    private $hasher;
+    public function __construct(UserPasswordHasherInterface $hasher)
+    {
+        // pour utiliser un service dans un autre
+        // on l'injecte par le constructeur
+        // le Conteneur de service se chargera de faire le new pour nous.
+
+        // on stocke alors cet objet dans une propriété
+        // à laquelle on pourra accéder dans notre code
+        $this->hasher = $hasher;
+    }
     public function load(ObjectManager $manager): void
     {
+
+        /**     user Datas**/
+
+
+        $userList = [
+            [
+                'email' => 'admin@admin.com',
+                'password' => 'admin',
+                'firstname' => 'admin',
+                'lastname' => 'admin',
+                'roles' => ['ROLE_ADMIN'],
+            ],
+            [
+                'email' => 'manager@manager.com',
+                'password' => 'admin',
+                'firstname' => 'manager',
+                'lastname' => 'manager',
+                'roles' => ['ROLE_CATALOG_MANAGER'],
+            ],
+            [
+                'email' => 'user@user.com',
+                'password' => 'admin',
+                'firstname' => 'user',
+                'lastname' => 'user',
+                'roles' => ['ROLE_USER'],
+            ],
+            [
+                'email' => 'app@app.com',
+                'password' => 'admin',
+                'firstname' => 'app',
+                'lastname' => 'app',
+                'roles' => ['ROLE_USER'],
+            ],
+        ];
+
+        $userEntityList = [];
+        foreach($userList as $currentUser)
+        {
+            $newUser = new User();
+            $hashedPassword = $this->hasher->hashPassword($newUser, $currentUser['password']);
+            
+            $newUser->setEmail($currentUser['email']);
+            $newUser->setPassword($hashedPassword);
+            $newUser->setRoles($currentUser['roles']);
+            $newUser->setFirstname($currentUser['firstname']);
+            $newUser->setLastname($currentUser['lastname']);
+            $userEntityList[] = $newUser;
+            $manager->persist($newUser);
+        }
+
 
         // Brands
         $brandList = [

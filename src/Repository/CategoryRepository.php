@@ -17,12 +17,19 @@ class CategoryRepository extends ServiceEntityRepository
     }
 
     public function getHomeOrder(){
-        return $this->createQueryBuilder('c')
-               ->andWhere('c.home_order > :val')
-               ->setParameter('val', 0)
-               ->getQuery()
-               ->getResult()
-           ;
+
+        $categories = $this->createQueryBuilder('c')
+        ->andWhere('c.home_order > :val')
+        ->setParameter('val', 0)
+        ->getQuery()
+        ->getResult()
+        ;
+
+        $homeOrderList = [];
+        foreach ($categories as $category) {
+            $homeOrderList[$category->getHomeOrder()] = $category;
+         }
+        return $homeOrderList;
 
     }
     //    /**
