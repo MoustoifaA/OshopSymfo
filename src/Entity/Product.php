@@ -17,30 +17,31 @@ class Product
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['product_browse'])]
+    #[Groups(['product_browse','brand_products'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['product_browse'])]
+    #[Groups(['product_browse','brand_products'])]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    #[Groups(['product_browse'])]
+    #[Groups(['product_browse','brand_products'])]
     private ?string $description = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(['product_browse'])]
+    #[Groups(['product_browse','brand_products'])]
     private ?string $picture = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(['product_browse'])]
+    #[Groups(['product_browse','brand_products'])]
     private ?float $price = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(['product_browse'])]
+    #[Groups(['product_browse','brand_products'])]
     private ?int $rate = null;
 
     #[ORM\Column]
+    #[Groups(['product_browse','brand_products'])]
     private ?int $status = null;
 
     #[ORM\Column]
