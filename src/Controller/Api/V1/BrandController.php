@@ -21,6 +21,6 @@ class BrandController extends AbstractController
     #[Route('/{id}', name: 'products', methods: ["GET"], requirements: ["id" => "\d+"])]
     public function products(Brand $brand): JsonResponse
     {
-        return $this->json($brand->getProducts(), 200, [], ['groups' => 'brand_products']);
+        return $this->json($brand->getProducts(), 200, [], ['groups' => 'product_browse']);
     }
 }

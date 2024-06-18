@@ -2,6 +2,7 @@
 
 namespace App\Controller\Api\V1;
 
+use App\Entity\Type;
 use App\Repository\TypeRepository;
 use Doctrine\DBAL\Types\TypeRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,5 +16,12 @@ class TypeController extends AbstractController
     public function browse(TypeRepository $typeRepository): JsonResponse
     {
         return $this->json($typeRepository->findAll(), 200, [], ['groups' => 'product_browse']);
+    }
+
+
+    #[Route('/{id}', name: 'products', methods: ["GET"], requirements: ["id" => "\d+"])]
+    public function products(Type $type): JsonResponse
+    {
+        return $this->json($type->getProducts(), 200, [], ['groups' => 'product_browse']);
     }
 }
