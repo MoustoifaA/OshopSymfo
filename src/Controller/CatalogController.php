@@ -26,11 +26,11 @@ class CatalogController extends AbstractController
     }
 
     #[Route('/category/{id}', name: 'categories', requirements: ['id' => '\d+'])]
-    public function category(Category $category,CategoryRepository $categoryR, $id): Response
+    public function category(Category $category,CategoryRepository $categoryR): Response
     {
 
         return $this->render('catalog/base_productList.html.twig', [
-            'products' => $categoryR->getNbProduct($id, 12),
+            'products' => $category->getProducts(),
             'category' => $category
 
         ]);
