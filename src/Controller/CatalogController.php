@@ -7,41 +7,48 @@ use App\Entity\Type;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Repository\CategoryRepository;
+use App\Service\Pagination;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\HttpFoundation\Request;
 
 #[Route('/catalog', name: 'app_catalog_')]
 class CatalogController extends AbstractController
 {
 
     #[Route('/type/{id}', methods:'GET', name: 'type', requirements:["id" => "\d+"])]
-    public function type(Type $type): Response
+    public function type(Type $type, Pagination $pagination, Request $request): Response
     {
+        $page = $request->query->getInt('page', 1);
+        $products = $pagination->paginateItem($page, $type->getProducts());
 
         return $this->render('catalog/base_productList.html.twig', [
-            'products' => $type->getProducts(),
+            'products' => $products,
             'type' => $type]);
     }
 
     #[Route('/category/{id}', name: 'categories', requirements: ['id' => '\d+'])]
-    public function category(Category $category,CategoryRepository $categoryR): Response
+    public function category(Category $category, Pagination $pagination, Request $request): Response
     {
+        $page = $request->query->getInt('page', 1);
+        $products = $pagination->paginateItem($page, $category->getProducts());
 
         return $this->render('catalog/base_productList.html.twig', [
-            'products' => $category->getProducts(),
+            'products' => $products,
             'category' => $category
 
         ]);
     }
 
     #[Route('/brand/{id}', name: 'brand', requirements: ['id' => '\d+'])]
-    public function brand(Brand $brand): Response
+    public function brand(Brand $brand, Pagination $pagination, Request $request): Response
     {
+        $page = $request->query->getInt('page', 1);
+        $products = $pagination->paginateItem($page, $brand->getProducts());
 
         return $this->render('catalog/base_productList.html.twig', [
-            'products' => $brand->getProducts(),
+            'products' => $products,
             'brand' => $brand
 
         ]);

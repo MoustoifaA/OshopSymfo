@@ -37,6 +37,9 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class= "d-flex justify-content-center">
+        {{ knp_pagination_render(products) }}
+    </div>
 
     <a title="create new type " class="btn btn-primary m-2"href="{{ path('app_back_type_new') }}">Add Type</a>
 </div>

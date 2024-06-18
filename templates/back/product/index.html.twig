@@ -50,7 +50,9 @@
         {% endfor %}
         </tbody>
     </table>
-
+    <div class= "d-flex justify-content-center">
+        {{ knp_pagination_render(products) }}
+    </div>
     <a title="create new product" class="btn btn-primary m-2" href="{{ path('app_back_product_add') }}">New Product</a>
 </div>
 {% endblock %}
