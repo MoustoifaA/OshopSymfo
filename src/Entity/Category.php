@@ -29,6 +29,7 @@ class Category
     private ?string $picture = null;
 
     #[ORM\Column]
+    #[Groups(['product_browse'])]
     private ?int $home_order = null;
 
     #[ORM\Column]
