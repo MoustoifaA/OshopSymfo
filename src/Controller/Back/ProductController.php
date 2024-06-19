@@ -5,7 +5,7 @@ namespace App\Controller\Back;
 use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
-use DateTime;
+use App\Service\Pagination;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,10 +17,13 @@ use Symfony\Component\Routing\Attribute\Route;
 class ProductController extends AbstractController
 {
     #[Route('/', name: 'browse', methods: ['GET'])]
-    public function index(ProductRepository $productRepository): Response
+    public function index(ProductRepository $productRepository, Pagination $pagination, Request $request): Response
     {
+        $page = $request->query->getInt('page', 1);
+        $products = $pagination->paginateItem($page, $productRepository->findAll());
+
         return $this->render('back/product/index.html.twig', [
-            'products' => $productRepository->findAll(),
+            'products' => $products,
         ]);
     }
 

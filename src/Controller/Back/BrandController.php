@@ -5,6 +5,7 @@ namespace App\Controller\Back;
 use App\Entity\Brand;
 use App\Form\BrandType;
 use App\Repository\BrandRepository;
+use App\Service\Pagination;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,10 +17,13 @@ use Symfony\Component\Routing\Attribute\Route;
 class BrandController extends AbstractController
 {
     #[Route('/', name: 'app_back_brand_index', methods: ['GET'])]
-    public function index(BrandRepository $brandRepository): Response
+    public function index(BrandRepository $brandRepository, Pagination $pagination, Request $request): Response
     {
+        $page = $request->query->getInt('page', 1);
+        $brands = $pagination->paginateItem($page, $brandRepository->findAll());
+
         return $this->render('back/brand/index.html.twig', [
-            'brands' => $brandRepository->findAll(),
+            'brands' => $brands,
         ]);
     }
 
