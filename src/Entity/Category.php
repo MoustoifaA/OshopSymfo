@@ -7,6 +7,7 @@ use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
@@ -14,9 +15,11 @@ class Category
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['product_browse'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 64)]
+    #[Groups(['product_browse'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 64, nullable: true)]
@@ -26,6 +29,7 @@ class Category
     private ?string $picture = null;
 
     #[ORM\Column]
+    #[Groups(['product_browse'])]
     private ?int $home_order = null;
 
     #[ORM\Column]

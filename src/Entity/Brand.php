@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\BrandRepository;
 use DateTimeImmutable;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\BrandRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: BrandRepository::class)]
 class Brand
@@ -14,9 +15,11 @@ class Brand
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['product_browse'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 64)]
+    #[Groups(['product_browse'])]
     private ?string $name = null;
 
     #[ORM\Column]
