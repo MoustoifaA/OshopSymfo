@@ -35,6 +35,9 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class= "d-flex justify-content-center">
+        {{ knp_pagination_render(brands) }}
+    </div>
 
     <a title="add" class='btn btn-primary m-2' href="{{ path('app_back_brand_new') }}">New Brand</a>
 </div>

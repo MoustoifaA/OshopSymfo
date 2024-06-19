@@ -5,6 +5,7 @@ namespace App\Controller\Back;
 use App\Entity\Type;
 use App\Form\TypeType;
 use App\Repository\TypeRepository;
+use App\Service\Pagination;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,10 +17,13 @@ use Symfony\Component\Routing\Attribute\Route;
 class TypeController extends AbstractController
 {
     #[Route('/', name: 'index', methods: ['GET'])]
-    public function index(TypeRepository $typeRepository): Response
+    public function index(TypeRepository $typeRepository, Pagination $pagination, Request $request): Response
     {
+        $page = $request->query->getInt('page', 1);
+        $types = $pagination->paginateItem($page, $typeRepository->findAll());
+
         return $this->render('back/type/index.html.twig', [
-            'types' => $typeRepository->findAll(),
+            'types' => $types,
         ]);
     }
 
