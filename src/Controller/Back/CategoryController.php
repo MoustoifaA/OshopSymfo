@@ -5,6 +5,7 @@ namespace App\Controller\Back;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Service\Pagination;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,10 +17,13 @@ use Symfony\Component\Routing\Attribute\Route;
 class CategoryController extends AbstractController
 {
     #[Route('/', name: 'app_back_category_browse', methods: ['GET'])]
-    public function browse(CategoryRepository $categoryRepository): Response
+    public function browse(CategoryRepository $categoryRepository, Pagination $pagination, Request $request): Response
     {
+        $page = $request->query->getInt('page', 1);
+        $categories = $pagination->paginateItem($page, $categoryRepository->findAll());
+
         return $this->render('back/category/index.html.twig', [
-            'categories' => $categoryRepository->findAll(),
+            'categories' => $categories,
         ]);
     }
 

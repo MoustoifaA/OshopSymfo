@@ -6,7 +6,6 @@ use App\Entity\Brand;
 use App\Entity\Type;
 use App\Entity\Category;
 use App\Entity\Product;
-use App\Repository\CategoryRepository;
 use App\Service\Pagination;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -25,7 +24,9 @@ class CatalogController extends AbstractController
 
         return $this->render('catalog/base_productList.html.twig', [
             'products' => $products,
-            'type' => $type]);
+            'type' => $type,
+            'count' => count($type->getProducts())
+        ]);
     }
 
     #[Route('/category/{id}', name: 'categories', requirements: ['id' => '\d+'])]
@@ -36,7 +37,8 @@ class CatalogController extends AbstractController
 
         return $this->render('catalog/base_productList.html.twig', [
             'products' => $products,
-            'category' => $category
+            'category' => $category,
+            'count' => count($category->getProducts())
 
         ]);
     }
@@ -49,7 +51,8 @@ class CatalogController extends AbstractController
 
         return $this->render('catalog/base_productList.html.twig', [
             'products' => $products,
-            'brand' => $brand
+            'brand' => $brand,
+            'count' => count($brand->getProducts())
 
         ]);
     }

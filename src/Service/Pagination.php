@@ -3,7 +3,6 @@ namespace App\Service;
 
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Component\HttpFoundation\Request;
 
 class Pagination
 {
@@ -15,6 +14,7 @@ class Pagination
     }
 
     public function paginateItem($page ,$itemList): PaginationInterface {
+        
         
         return $this->paginator->paginate(
             $itemList,
