@@ -11,10 +11,6 @@
 
         <title>{% block title %}Oshop{% endblock %}</title>
 
-    {% if '/catalog' in app.request.uri  %}       
-        {# rel links for pagination #}
-        {{ knp_pagination_rel_links(products) }}
-    {% endif %}
     </head>
     <body>
     
